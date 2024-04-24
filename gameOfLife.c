@@ -249,6 +249,14 @@ int main(int argc, char **argv)
 	Pattern pattern = RANDOM;
 
 	// parse command line arguments
+	if (argc == 2 && (!strcmp(argv[1], "-?") || !strcmp(argv[1], "--help")))
+	{
+		printf("\nUsage:\n gameOfLife -(w|h|d|g|p) <value> \n options: ");
+		printf("\n -w / --width = width\n -h / --height = height\n -d / --delay = delay between updates (in ms)");
+		printf("\n -g / --generations = number of generations to quit after\n -p / --pattern = initial pattern (blinker|beacon|random|toad)\n");
+		exit(0);
+	}
+
 	for (int i = 1; i < argc; i++)
 	{
 		if ((!strcmp(argv[i], "-w") || !strcmp(argv[i], "--width")) && i + 1 < argc)
@@ -285,12 +293,6 @@ int main(int argc, char **argv)
 		else if (!strcmp(argv[i], "-s") || !strcmp(argv[i], "--sequence"))
 		{
 			shouldPrintSequence = 1;
-		}
-		else if (!strcmp(argv[i], "-?") || !strcmp(argv[i], "--help") && argc == 2)
-		{
-			printf("\nUsage:\n gameOfLife -(w|h|d|g|p) <value> \n options: ");
-			printf("\n -w / --width = width\n -h / --height = height\n -d / --delay = delay between updates (in ms)");
-			printf("\n -g / --generations = number of generations to quit after\n -p / --pattern = initial pattern (blinker|beacon|random|toad)\n");
 		}
 	}
 
