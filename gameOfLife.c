@@ -45,7 +45,7 @@
 #define DEAD '.'
 #define LIVE 'X'
 
-int delayMilliseconds = DEFAULT_DELAY;
+unsigned int delayMilliseconds = DEFAULT_DELAY;
 unsigned int currentGeneration = 0;
 unsigned int maxGenerations = 0;
 unsigned int shouldPrintSequence = 0;
