@@ -93,6 +93,7 @@ void initGridDataWithPattern(Grid *grid, Pattern p)
 		}
 	}
 
+	// define and set requested initial pattern
 	int **data = grid->data;
 	switch (p)
 	{
