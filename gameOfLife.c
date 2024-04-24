@@ -252,7 +252,7 @@ int main(int argc, char **argv)
 	if (argc == 2 && (!strcmp(argv[1], "-?") || !strcmp(argv[1], "--help")))
 	{
 		printf("\nUsage:\n gameOfLife -(w|h|d|g|p) <value> \n options: ");
-		printf("\n -w / --width = width\n -h / --height = height\n -d / --delay = delay between updates (in ms)");
+		printf("\n -w / --width (min = 8) = width\n -h / --height (min = 8) = height\n -d / --delay = delay between updates (in ms)");
 		printf("\n -g / --generations = number of generations to quit after\n -p / --pattern = initial pattern (blinker|beacon|random|toad)\n");
 		exit(0);
 	}
@@ -262,10 +262,18 @@ int main(int argc, char **argv)
 		if ((!strcmp(argv[i], "-w") || !strcmp(argv[i], "--width")) && i + 1 < argc)
 		{
 			grid.width = atoi(argv[i+1]);
+			if (grid.width < 8)
+			{
+				grid.width = 8;
+			}
 		}
 		else if ((!strcmp(argv[i], "-h") || !strcmp(argv[i], "--height"))  && i + 1 < argc)
 		{
 			grid.height = atoi(argv[i+1]);
+			if (grid.height < 8)
+			{
+				grid.height = 8;
+			}
 		}
 		else if ((!strcmp(argv[i], "-d") || !strcmp(argv[i],"--delay")) && i + 1 < argc)
 		{
